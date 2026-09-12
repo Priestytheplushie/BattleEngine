@@ -1,0 +1,7 @@
+namespace BattleEngine
+{
+    class Enemy
+    {
+        
+    }
+}
