@@ -4,7 +4,7 @@ namespace BattleEngine
     {
         public double Health = 100;
         public int Strength = 5;
-        public int Speed = 10;
+        public int Speed = 5;
         public int Defense = 3;
         public int Intelligence = 75; 
         public string Name;
