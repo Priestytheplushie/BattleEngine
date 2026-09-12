@@ -33,7 +33,7 @@ namespace BattleEngine
                 Console.WriteLine();
                 if (choice == "1")
                 {
-                    BattleEngine Engine = new BattleEngine();
+                    BattleEngine Engine = new BattleEngine(player);
                     break;
                 }
                 else if (choice == "2")

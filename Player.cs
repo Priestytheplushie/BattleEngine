@@ -17,6 +17,11 @@ namespace BattleEngine {
             Intelligence = random.Next(10,300);
         }
 
+        public void TakeDamage(double damage)
+        {
+            Health -= damage;
+        }
+
         public void ViewStats()
         {
             UI.Typewriter("Player Stats");
