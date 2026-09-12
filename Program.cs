@@ -34,7 +34,18 @@ namespace BattleEngine
                 if (choice == "1")
                 {
                     BattleEngine Engine = new BattleEngine(player);
-                    break;
+                    Console.WriteLine();
+                    UI.Typewriter("You defeated the monster! Play Again?");
+                    choice = Console.ReadLine() ?? "2";
+                    if (choice == "1")
+                    {
+                        Engine.Reset();
+                    }
+                    else
+                    {
+                        UI.Typewriter("Thanks for playing!");
+                        Environment.Exit(0);
+                    }
                 }
                 else if (choice == "2")
                 {

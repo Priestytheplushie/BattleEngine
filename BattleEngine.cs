@@ -1,4 +1,6 @@
-﻿namespace BattleEngine 
+﻿using System.Threading.Channels;
+
+namespace BattleEngine 
 {
     class BattleEngine 
     {
@@ -10,6 +12,13 @@
         {
             this.Player = player;
             this.Enemy = new Enemy("Beast");
+            Initative();
+        }
+
+        public void Reset()
+        {
+            this.Enemy = new Enemy("Beast");
+            this.TurnCount = 0;
             Initative();
         }
 
@@ -52,7 +61,45 @@
         void EnemyTurn()
         {
             TurnCount++;
-            PlayerTurn();
+            UI.Typewriter($"Turn: {TurnCount}");
+            Console.WriteLine(); 
+            UI.Typewriter($"The {Enemy.Name} stares at you...");
+            Random random = new Random();
+            int enemyChoice = random.Next(0,3);
+            if (enemyChoice == 1 || enemyChoice == 2)
+            {
+                int EnemyDamage = Enemy.Strength;
+                if (random.Next(0,10) > 8)
+                {
+                    EnemyDamage = EnemyDamage * 2; 
+                    UI.Typewriter("CRITICAL HIT");
+                }
+                int bonus = random.Next(-5,5);
+                EnemyDamage += bonus; 
+                EnemyDamage -= Player.Defense;
+                Player.TakeDamage(EnemyDamage);
+                UI.Typewriter($"The {Enemy.Name} strikes you for {EnemyDamage}");
+                Console.WriteLine();
+            }
+            else
+            {
+                UI.Typewriter("The enemy hesitates, giving you a chance to strike!");
+            }
+            if (Player.Health > 0 && Enemy.Health > 0)
+            {
+                EnemyTurn();
+            }
+            else if (Player.Health < 0)
+            {
+                GameOver("You got killed....");
+            }
+            else if (Enemy.Health < 0)
+            {
+                UI.Typewriter("YOU WON!");
+                UI.Typewriter($"+{5 + TurnCount} XP");
+            }
+
+
         }
         void PlayerTurn()
         {
@@ -77,6 +124,9 @@
                         playerDamage = playerDamage * 2;
                         UI.Typewriter("CRITICAL HIT!\n");
                     }
+                    int bonus = random.Next(-5,5);
+                    playerDamage += bonus;
+                    playerDamage -= Enemy.Defense;
                     Enemy.TakeDamage(playerDamage);
                     UI.Typewriter($"You strike {Enemy.Name} for {playerDamage} damage!");
                     Console.WriteLine();
@@ -123,7 +173,7 @@
             else if (Enemy.Health < 0)
             {
                 UI.Typewriter("YOU WON!");
-                UI.Typewriter("+0 XP");
+                UI.Typewriter($"+{5 + TurnCount} XP");
             }
         }
     }
