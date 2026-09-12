@@ -78,7 +78,7 @@ namespace BattleEngine
                 EnemyDamage += bonus; 
                 EnemyDamage -= Player.Defense;
                 Player.TakeDamage(EnemyDamage);
-                UI.Typewriter($"The {Enemy.Name} strikes you for {EnemyDamage}");
+                UI.Typewriter($"The {Enemy.Name} strikes you for {EnemyDamage} damage");
                 Console.WriteLine();
             }
             else

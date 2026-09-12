@@ -2,7 +2,7 @@ namespace BattleEngine
 {
     class Enemy
     {
-        public double Health = 100;
+        public double Health = 50;
         public int Strength = 5;
         public int Speed = 5;
         public int Defense = 3;
