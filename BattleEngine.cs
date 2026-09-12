@@ -87,7 +87,7 @@ namespace BattleEngine
             }
             if (Player.Health > 0 && Enemy.Health > 0)
             {
-                EnemyTurn();
+                PlayerTurn();
             }
             else if (Player.Health < 0)
             {
