@@ -3,10 +3,10 @@ namespace BattleEngine
     class Enemy
     {
         public double Health = 100;
-        public int Strength = 0;
-        public int Speed = 0;
-        public int Defense = 0;
-        public int Intelligence = 0; 
+        public int Strength = 5;
+        public int Speed = 10;
+        public int Defense = 3;
+        public int Intelligence = 75; 
         public string Name;
         public Enemy(string name) {
             Name = name;
