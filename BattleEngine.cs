@@ -136,7 +136,7 @@ namespace BattleEngine
                     Console.WriteLine();
                     Console.WriteLine($"1. {Enemy.Name}");
                     Console.WriteLine($"2. {Player.Name}");
-                    choice = Console.ReadLine() ?? "1.";
+                    choice = Console.ReadLine() ?? "1";
                     Console.WriteLine();
                     if (choice == "1")
                     {
