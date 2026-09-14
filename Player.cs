@@ -1,6 +1,6 @@
 namespace BattleEngine {
     class Player {
-        public double Health = 100;
+        public double Health = 50;
         public int Strength = 0;
         public int Speed = 0;
         public int Defense = 0;
